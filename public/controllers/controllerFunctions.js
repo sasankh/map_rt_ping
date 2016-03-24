@@ -4,7 +4,7 @@ angular.module('mini');  //telling angular that the js is a part of 'mini'
 //Declaring of controllers and linking it to its function
 mini.controller('menuController',menuController);
 mini.controller('mapStaticController',mapStaticController);
-mini.controller('dynamicMapController',dynamicMapController);
+mini.controller('mapPingController',mapPingController);
 
 /*-----------------------------------------------------------------------------*/
 
@@ -18,8 +18,8 @@ function menuController($scope, $http){
 	$scope.staticMap = function(){
 		location.href = "#/map/static";
 	}
-	$scope.dynamicMap = function(){
-		location.href = "#/map/dynamic"
+	$scope.pingMap = function(){
+		location.href = "#/map/ping"
 	}
 
 	refresh();
@@ -33,8 +33,8 @@ function mapStaticController($scope, $http){
 	refresh();
 }
 
-//dynamic map controller function
-function dynamicMapController($scope, $http){
+//ping map controller function
+function mapPingController($scope, $http){
 	$scope.location = {"lat": 27.717245, "lng": 85.323960};
 
 	var refresh = function(){
@@ -50,3 +50,9 @@ function dynamicMapController($scope, $http){
 }
 
 /*----------------------------------------------------------------------------*/
+
+mini.filter('ping',function(){
+  return function(){
+    return new google.maps.Marker({map: map, position: {lat: 18.432608, lng: -99.133209}});
+  }
+});

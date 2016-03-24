@@ -5,22 +5,22 @@ var mini = angular.module('mini',['ngRoute']);   //ngRoute is required for routi
 mini.config(function($routeProvider, $locationProvider){
 	$routeProvider
 	.when('/',
-	//main Page route
+	//menu route
 	{
 		controller:'menuController',
 		templateUrl:'views/menu.html'
 	})
 	.when('/map/static',
-	//main Page route
+	//static map route
 	{
 		controller:'mapStaticController',
 		templateUrl:'views/staticMap.html'
 	})
-	.when('/map/dynamic',
-	//main Page route
+	.when('/map/ping',
+	//ping map route
 	{
-		controller:'dynamicMapController',
-		templateUrl:'views/dynamicMap.html'
+		controller:'mapPingController',
+		templateUrl:'views/pingMap.html'
 	})
 	// add other 'when' as above for more routing. Point the 'page' and the respective controller
 	.otherwise({redirectTo:'/'});

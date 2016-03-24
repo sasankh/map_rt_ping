@@ -10,15 +10,22 @@
   function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       scaleControl: true,
-      center: locationData.coordinates,
-      zoom: 10
+      center: {lat: 27.3685477, lng: -101.1810522},
+      zoom: 5
     });
-    var infowindow = new google.maps.InfoWindow;
-    infowindow.setContent(locationData.info);
 
-    var marker = new google.maps.Marker({map: map, position: locationData.coordinates});
-    marker.addListener('click', function() {
-      infowindow.open(map, marker);
+    var headQuarter = new google.maps.Marker({map: map, position: {lat: 37.478855, lng: -122.180135}});
+    headQuarter.addListener('click', function() {
+      var headQuarterInfo = new google.maps.InfoWindow;
+      headQuarterInfo.setContent('Headquarter');
+      headQuarterInfo.open(map, headQuarter);
+    });
+
+    var commandCenter = new google.maps.Marker({map: map, position: {lat: 19.3685477, lng: -99.1810522}});
+    commandCenter.addListener('click', function() {
+      var commandCenterInfo = new google.maps.InfoWindow;
+      commandCenterInfo.setContent('Command Center');
+      commandCenterInfo.open(map, commandCenter);
     });
   }
   </script>

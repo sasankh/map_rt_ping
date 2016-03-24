@@ -7,7 +7,7 @@ app.use(express.static(__dirname + "/public"));  // asking express to use the fo
 app.use(bodyParser.json());  //asking express to use the body parser
 
 //server ports
-app.listen(3001);    //asking express to use port 3000
+app.listen(4000);    //asking express to use port 3000
 
 //server side function
-app.get('/retriveAllData', serverFunction.retriveAllData);   // get one data ---> retrive one data from collection
+app.get('/retriveLocation', serverFunction.retriveLocation);   // get one data ---> retrive one data from collection

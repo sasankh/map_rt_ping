@@ -5,29 +5,24 @@
     <div id="map" class=container></div>
   </center>
   <script>
-  var locationData = {"coordinates":{lat: 37.478855, lng: -122.180135},"info":"Awesome"};
-  var map;
-  function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      scaleControl: true,
-      center: {lat: 27.3685477, lng: -101.1810522},
-      zoom: 5
-    });
+  var map = new google.maps.Map(document.getElementById('map'), {
+    scaleControl: true,
+    center: {lat: 27.3685477, lng: -101.1810522},
+    zoom: 5
+  });
+  
+  var headQuarter = new google.maps.Marker({map: map, position: {lat: 37.478855, lng: -122.180135}});
+  headQuarter.addListener('click', function() {
+    var headQuarterInfo = new google.maps.InfoWindow;
+    headQuarterInfo.setContent('Headquarter');
+    headQuarterInfo.open(map, headQuarter);
+  });
 
-    var headQuarter = new google.maps.Marker({map: map, position: {lat: 37.478855, lng: -122.180135}});
-    headQuarter.addListener('click', function() {
-      var headQuarterInfo = new google.maps.InfoWindow;
-      headQuarterInfo.setContent('Headquarter');
-      headQuarterInfo.open(map, headQuarter);
-    });
-
-    var commandCenter = new google.maps.Marker({map: map, position: {lat: 19.3685477, lng: -99.1810522}});
-    commandCenter.addListener('click', function() {
-      var commandCenterInfo = new google.maps.InfoWindow;
-      commandCenterInfo.setContent('Command Center');
-      commandCenterInfo.open(map, commandCenter);
-    });
-  }
+  var commandCenter = new google.maps.Marker({map: map, position: {lat: 19.3685477, lng: -99.1810522}});
+  commandCenter.addListener('click', function() {
+    var commandCenterInfo = new google.maps.InfoWindow;
+    commandCenterInfo.setContent('Command Center');
+    commandCenterInfo.open(map, commandCenter);
+  });
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdnOWxg4xOAkRHIYGF0cwhwOPqbYRgueQ&callback=initMap" async defer></script>
 </div>

@@ -1,7 +1,7 @@
 {
-  "name": "mean-crud",
+  "name": "map_rt_ping",
   "version": "1.0.0",
-  "description": "Minimum requirement for express with simple MEAN CRUD function",
+  "description": "Real time map ping",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.13.2",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sasankh/MEAN-CRUD.git"
+    "url": "git+https://github.com/sasankh/map_rt_ping.git"
   },
   "keywords": [
     "mean",
@@ -24,7 +24,7 @@
   "author": "Sasankh BC",
   "license": "FREE",
   "bugs": {
-    "url": "https://github.com/sasankh/MEAN-CRUD/issues"
+    "url": "https://github.com/sasankh/map_rt_ping/issues"
   },
-  "homepage": "https://github.com/sasankh/MEAN-CRUD#readme"
+  "homepage": "https://github.com/sasankh/map_rt_ping#readme"
 }

@@ -35,24 +35,40 @@ function mapStaticController($scope, $http){
 
 //ping map controller function
 function mapPingController($scope, $http){
-	$scope.location = {"lat": 27.717245, "lng": 85.323960};
 
 	var refresh = function(){
 		$http.get('/retriveLocation').then(function(response){
-			$scope.location = response.data.location;
-			console.log($scope.location);
+			$scope.pings = [];
+			(function initiateLoop (x) {
+				setTimeout(function () {
+					setPing(response.data.coordinates[x]);
+					if (--x > -1) initiateLoop(x);
+				}, 1000);
+			})(response.data.coordinates.length - 1);
 		}, function(response){
-			console.log(response);
+			alert('There was an error getting the pings');
 		});
 	};
 
+	var setPing = function(coordinates){
+		var ping = new google.maps.Marker({
+			map: window.map,
+			//animation: google.maps.Animation.BOUNCE,
+			position: {
+				lat: coordinates.lat,
+				lng: coordinates.lng
+			}
+		});
+
+		setTimeout(function(){ping.setMap(null)}, 2*1000);
+	};
+
 	refresh();
+
+	$scope.refresh = function(){
+		refresh();
+	};
+
 }
 
 /*----------------------------------------------------------------------------*/
-
-mini.filter('ping',function(){
-  return function(){
-    return new google.maps.Marker({map: map, position: {lat: 18.432608, lng: -99.133209}});
-  }
-});

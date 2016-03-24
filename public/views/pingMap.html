@@ -2,27 +2,48 @@
   <center>
     <h1 style="font-family:calibri">Dynamic Map</h1>
     <br>
+    <div style="padding:0px 0px 5px 0px">
+      <button ng-click="refresh()" class="btn btn-info">Refresh</button>
+    </div>
     <div id="map" class=container></div>
   </center>
   <script>
   var map = new google.maps.Map(document.getElementById('map'), {
     scaleControl: true,
     center: {lat:22.3685477, lng: -105.1810522},
-    zoom: 6
+    zoom: 6,
+    mapTypeId: google.maps.MapTypeId.TERRAIN
   });
 
-  var headQuarter = new google.maps.Marker({map: map, position: {lat: 37.478855, lng: -122.180135}});
+  var headQuarter = new google.maps.Marker({
+    map: map,
+    icon:'https://clip.mx/wp-content/themes/clip/favicon.png',
+    position: {
+      lat: 37.478855,
+      lng: -122.180135
+    }
+  });
+
+  var commandCenter = new google.maps.Marker({
+    map: map,
+    icon:'https://clip.mx/wp-content/themes/clip/favicon.png',
+    position: {
+      lat: 19.3685477,
+      lng: -99.1810522
+    }
+  });
+
   headQuarter.addListener('click', function() {
     var headQuarterInfo = new google.maps.InfoWindow;
     headQuarterInfo.setContent('Headquarter');
     headQuarterInfo.open(map, headQuarter);
   });
 
-  var commandCenter = new google.maps.Marker({map: map, position: {lat: 19.3685477, lng: -99.1810522}});
   commandCenter.addListener('click', function() {
     var commandCenterInfo = new google.maps.InfoWindow;
     commandCenterInfo.setContent('Command Center');
     commandCenterInfo.open(map, commandCenter);
   });
+
   </script>
 </div>
